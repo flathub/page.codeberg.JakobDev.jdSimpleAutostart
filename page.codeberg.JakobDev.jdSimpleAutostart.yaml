@@ -39,9 +39,11 @@ modules:
       - pip install --no-deps --no-build-isolation --prefix=$FLATPAK_DEST .
       - python ./install-unix-datafiles.py --prefix=$FLATPAK_DEST
     sources:
-      - type: git
-        url: https://codeberg.org/JakobDev/jdSimpleAutostart.git
-        tag: '1.3'
-        commit: e02d9c9a8f091d40aaf6c74a2e01f2b64ab1ca3e
+      - type: archive
+        url: https://codeberg.org/JakobDev/jdSimpleAutostart/archive/1.3.tar.gz
+        sha256: a4877c8ba05bf14e2dbd4b9c6b38acff6b75d6b6f2f01c05178ce65d50822d77
         x-checker-data:
-          type: git
+          type: json
+          url: https://codeberg.org/api/v1/repos/JakobDev/jdSimpleAutostart/releases/latest
+          version-query: .tag_name
+          url-query: .tarball_url
