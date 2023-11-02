@@ -11,8 +11,17 @@ build-options:
   env:
     - BASEAPP_REMOVE_PYWEBENGINE=1
 finish-args:
+  - --filesystem=/var/lib/flatpak/exports/share/applications:ro
+  - --filesystem=xdg-data/flatpak/exports/share/applications:ro
+  - --filesystem=/var/lib/flatpak/exports/share/icons:ro
+  - --filesystem=xdg-data/flatpak/exports/share/icons:ro
   - --filesystem=xdg-config/autostart:create
+  - --filesystem=xdg-data/applications:ro
+  - --filesystem=/var/lib/flatpak/app:ro
+  - --filesystem=xdg-data/flatpak/app:ro
   - --filesystem=host-etc:ro
+  # See https://github.com/flatpak/flatpak/issues/5575
+  - --filesystem=host-os:ro
   - --socket=fallback-x11
   - --socket=wayland
   - --device=dri
